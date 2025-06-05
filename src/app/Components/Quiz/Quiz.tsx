@@ -14,6 +14,7 @@ const Quiz = () => {
   const [correctCount, setCorrectCount] = useState(0);
   const [wrongCount, setWrongCount] = useState(0);
   const [skippedCount, setSkippedCount] = useState(0);
+  const [attemptCount, setAttemptCount] = useState(1);
 
   const currentQuestion = questions[currentIndex];
 
@@ -23,7 +24,7 @@ const Quiz = () => {
       return;
     }
 
-    // +1 for correct, 0 for wrong (no negative marking)
+    // +1 for correct, -0.5 for wrong (negative marking)
     if (selectedAnswer === currentQuestion.answer) {
       setScore((prev) => prev + 1);
       setCorrectCount((prev)=>prev+1);
@@ -57,6 +58,7 @@ const Quiz = () => {
     setScore(0);
     setSelectedAnswer(null);
     setShowResult(false);
+    setAttemptCount(prev=>prev+1)
   };
 
   return (
@@ -69,7 +71,9 @@ const Quiz = () => {
           wrong={wrongCount}
           skipped={skippedCount}
           total={questions.length}
+          attemptcount={attemptCount}
           onRestart={restartQuiz}
+          
         />
       ) : (
         <>
@@ -91,7 +95,7 @@ const Quiz = () => {
 
             <button
               onClick={handleNext}
-              className="bg-Green-600 text-white px-4 py-2 rounded hover:bg-blue-700 hover:cursor-pointer bg-green-500"
+              className=" text-white px-4 py-2 rounded hover:bg-blue-700 hover:cursor-pointer bg-green-500"
             >
               {currentIndex + 1 == questions.length ? "Submit" : "Next"}
             </button>

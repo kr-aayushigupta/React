@@ -1,5 +1,6 @@
 "use client"
 
+
 import { useState } from 'react';
 import { questions } from '@/app/Components/Quiz/data/Questions';
 import QuestionCard from './QuestionCard';
@@ -50,10 +51,13 @@ const Quiz = () => {
 
   return (
     <div className="max-w-md mx-auto mt-12">
+
+
+        <h1 className='text-2xl font-bold text-center text-black/50'>Quiz</h1>
       {showResult ? (
         <Result score={score} total={questions.length} onRestart={restartQuiz} />
       ) : (
-        <>
+        <> 
           <QuestionCard
             question={currentQuestion.question}
             options={currentQuestion.options}
@@ -64,17 +68,17 @@ const Quiz = () => {
           <div className="flex justify-between mt-4">
             <button
               onClick={handleSkip}
-              className="bg-yellow-400 px-4 py-2 rounded hover:bg-yellow-500"
+              className="bg-yellow-400 px-4 py-2 rounded hover:bg-yellow-500 hover:cursor-pointer"
             >
               Skip
             </button>
 
             <button
               onClick={handleNext}
-              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+              className="bg-Green-600 text-white px-4 py-2 rounded hover:bg-blue-700 hover:cursor-pointer bg-green-500" 
              
             >
-              Next
+              {currentIndex + 1 == questions.length ? "Submit" : "Next" }
             </button>
           </div>
         </>

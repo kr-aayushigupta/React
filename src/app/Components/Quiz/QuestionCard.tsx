@@ -47,7 +47,7 @@ const QuestionCard: React.FC<Props> = ({
         {options.map((opt) => (
           <button
             key={opt}
-            className="bg-blue-500 hover:bg-blue-600 hover:cursor-pointer text-white px-4 py-2 rounded"
+            className="bg-blue-500 hover:bg-blue-600 hover:cursor-pointer text-white px-4 py-2 rounded focus:border-2 focus:bg-blue-800"
             onClick={() => onSelect(opt)}
           >
             {opt}

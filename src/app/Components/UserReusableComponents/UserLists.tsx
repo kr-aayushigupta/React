@@ -14,10 +14,12 @@ const UserList = () => {
   const [users, setUsers] = useState<APIUser[]>([]);
 
   useEffect(() => {
-    fetch('https://randomuser.me/api/?results=16')
+    fetch('https://randomuser.me/api/?results=100')
       .then(res => res.json())
       .then(data => setUsers(data.results));
   }, []);
+
+  
 
   return (
     <ScrollArea className='h-[800px] w-screen rounded-md border p-4 '>

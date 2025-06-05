@@ -3,10 +3,11 @@ import AddTaskWithoutLocalStorage from "@/app/Components/LocalStorageUsage/AddTa
 import AddTaskWithLocalStorage from "@/app/Components/LocalStorageUsage/AddTaskWithLocalStorage";
 import { ThemeProvider } from "./Components/UserReusableComponents/ThemeContext";
 import UserCard from "./Components/UserReusableComponents/UserCard";
-
 import UserList from "./Components/UserReusableComponents/UserLists";
 import App from "./Components/PropsLearnt/PropsComponent";
 import Quiz from "./Components/Quiz/Quiz";
+
+
 export default function Home() {
   return (
     // <ThemeProvider>

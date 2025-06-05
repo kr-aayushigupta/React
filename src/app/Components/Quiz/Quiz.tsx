@@ -53,7 +53,7 @@ const Quiz = () => {
     }
   };
 
-  const restartQuiz = () => {
+  const restartQuiz = () => { // here most of the state variables are changed hence - causes re render- quiz is reloaded.
     setCurrentIndex(0);
     setScore(0);
     setSelectedAnswer(null);

@@ -27,7 +27,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased `}
       >
-        {children} // here children is a prop - and here component is passed as prop
+        {children} 
       </body>
     </html>
   );

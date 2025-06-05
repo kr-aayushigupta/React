@@ -9,20 +9,17 @@ import App from "./Components/PropsLearnt/PropsComponent";
 import Quiz from "./Components/Quiz/Quiz";
 export default function Home() {
   return (
-    <ThemeProvider>
+    // <ThemeProvider>
       <div className="mx-auto h-screen bg-[url('/bg1.jpg')] bg-center bg-cover ">
         <div className="flex justify-center items-center gap-4">
           {/* <AddTaskWithoutLocalStorage/>
       <AddTaskWithLocalStorage/> */}
-       <Quiz />
+       <Quiz/>
         </div>
-
         {/* <UserCard/> */}
         {/* <UserList/> */}
-
         {/* <App/> */}
-       
       </div>
-    </ThemeProvider>
+    // </ThemeProvider>
   );
 }

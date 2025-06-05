@@ -28,6 +28,7 @@
 import React from "react";
 
 type Props = {
+    questionumber:number;
   question: string;
   options: string[];
   selectedAnswer: string | null;
@@ -35,6 +36,7 @@ type Props = {
 };
 
 const QuestionCard: React.FC<Props> = ({
+    questionumber,
   question,
   options,
   selectedAnswer,
@@ -42,8 +44,10 @@ const QuestionCard: React.FC<Props> = ({
 }) => {
   return (
     <div className="bg-white dark:bg-gray-800 p-6 rounded shadow">
-      <h2 className="text-lg font-semibold mb-4">{question}</h2>
+      <h2 className="text-lg font-semibold mb-4">Q.{questionumber} {question}</h2>
       <div className="flex flex-col gap-2">
+
+
         {options.map((opt) => (
           <button
             key={opt}

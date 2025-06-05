@@ -30,6 +30,7 @@ const App: React.FC = () => {
       </Layout1>
 
       {/* Props with arrays and callbacks : skills property of usercasrd is an array and onclick is a function */}
+     
       <UserCard
         name="Bob"
         skills={user.skills}
@@ -37,6 +38,7 @@ const App: React.FC = () => {
       />
 
       {/* Render props : datafetcher has the data - but the parent component decides how to display it using "render" */}
+     
       <DataFetcher
         render={(data) => (
           <div className="border p-2 mt-4 ">

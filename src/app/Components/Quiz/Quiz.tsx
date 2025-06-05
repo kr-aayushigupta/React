@@ -1,10 +1,9 @@
-"use client"
+"use client";
 
-
-import { useState } from 'react';
-import { questions } from '@/app/Components/Quiz/data/Questions';
-import QuestionCard from './QuestionCard';
-import Result from './Result';
+import { useState } from "react";
+import { questions } from "@/app/Components/Quiz/data/Questions";
+import QuestionCard from "./QuestionCard";
+import Result from "./Result";
 
 const Quiz = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -12,24 +11,35 @@ const Quiz = () => {
   const [score, setScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
 
+  const [correctCount, setCorrectCount] = useState(0);
+  const [wrongCount, setWrongCount] = useState(0);
+  const [skippedCount, setSkippedCount] = useState(0);
+
   const currentQuestion = questions[currentIndex];
 
   const handleNext = () => {
     if (selectedAnswer === null) {
-      alert('Please select an answer or skip.');
+      alert("Please select an answer or skip.");
       return;
     }
 
     // +1 for correct, 0 for wrong (no negative marking)
     if (selectedAnswer === currentQuestion.answer) {
       setScore((prev) => prev + 1);
-    } 
+      setCorrectCount((prev)=>prev+1);
+    }
+    else{
+        setScore((prev) => prev - 0.5);
+      setWrongCount((prev)=>prev+1);
+        
+    }
 
     moveToNext();
   };
 
   const handleSkip = () => {
     // Skip question - score unchanged
+    setSkippedCount((prev)=>prev+1);
     moveToNext();
   };
 
@@ -51,14 +61,20 @@ const Quiz = () => {
 
   return (
     <div className="max-w-md mx-auto mt-12">
-
-
-        <h1 className='text-2xl font-bold text-center text-black/50'>Quiz</h1>
+    
       {showResult ? (
-        <Result score={score} total={questions.length} onRestart={restartQuiz} />
+        <Result
+          score={score}
+          correct={correctCount}
+          wrong={wrongCount}
+          skipped={skippedCount}
+          total={questions.length}
+          onRestart={restartQuiz}
+        />
       ) : (
-        <> 
+        <>
           <QuestionCard
+          questionumber={currentIndex+1}
             question={currentQuestion.question}
             options={currentQuestion.options}
             selectedAnswer={selectedAnswer}
@@ -75,10 +91,9 @@ const Quiz = () => {
 
             <button
               onClick={handleNext}
-              className="bg-Green-600 text-white px-4 py-2 rounded hover:bg-blue-700 hover:cursor-pointer bg-green-500" 
-             
+              className="bg-Green-600 text-white px-4 py-2 rounded hover:bg-blue-700 hover:cursor-pointer bg-green-500"
             >
-              {currentIndex + 1 == questions.length ? "Submit" : "Next" }
+              {currentIndex + 1 == questions.length ? "Submit" : "Next"}
             </button>
           </div>
         </>
